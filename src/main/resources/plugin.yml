@@ -1,0 +1,13 @@
+name: ST-BanItem
+version: 2.1
+author: STuuDENT
+main: com.stuudent.BanItem.BanItemCore
+description: 자작 금지템 플러그인 created by STuuDENT
+default-permission: true
+
+commands:
+  금지템:
+    description: Show Banned Items to Player.
+  금지템관리:
+    permission: banitem.admin
+    description: You Can Set BanItem through this Commands.

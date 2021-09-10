@@ -1,0 +1,82 @@
+# 해당 펄미션 보유시 금지템 사용가능, /금지템관리 명령어 사용가능
+Permission: banitem.admin
+
+# 금지템 GUI 이름
+UseItemGUI: 금지템:[&6우클릭&r]
+CraftItemGUI: 금지템:[&a조합&r]
+
+# 금지템 사용했을 때의 메시지
+UsedRightClickBanned: '&6놀이터 &f｜ &c해당 아이템은 사용할 수 없습니다.'
+UsedCraftBanned: '&6놀이터 &f｜ &c해당 아이템은 조합할 수 없습니다.'
+
+# /금지템관리 명령어 메시지
+AdminHelpMessage:
+  - ' '
+  - '&6놀이터 &f｜ &c/금지템관리 우클릭 &f- 우클릭을 금지하는 아이템을 설정합니다.'
+  - '&6놀이터 &f｜ &c/금지템관리 조합 &f- 조합을 금지하는 아이템을 설정합니다.'
+WrongAdminCommand: '&6놀이터 &f｜ &c해당 명령어가 존재하지 않습니다. &f/금지템관리'
+OpenRightClickPage: '&6놀이터 &f｜ 금지템:[&6우클릭&f] 설정창을 열었습니다. 페이지를 넘기거나 닫으면 값을 저장합니다.'
+OpenCraftPage: '&6놀이터 &f｜ 금지템:[&a조합&f] 설정창을 열었습니다. 페이지를 넘기거나 닫으면 값을 저장합니다.'
+OtherOpenedRightClick: '&6놀이터 &f｜ 현재 다른 플레이어:[&a[PLAYER]&f]가 금지템:[&6우클릭&f]을 설정하고 있습니다.'
+OtherOpenedCraft: '&6놀이터 &f｜ 현재 다른 플레이어:[&a[PLAYER]&f]가 금지템:[&a조합&f]을 설정하고 있습니다.'
+
+# /금지템 명령어 메시지
+UserHelpMessage:
+  - ' '
+  - '&6놀이터 &f｜ /금지템 우클릭 - &6우킬릭(사용)을 금지하는 아이템을 보여줍니다.'
+  - '&6놀이터 &f｜ /금지템 조합 - &6조합을 금지하는 아이템을 보여줍니다.'
+WrongUserCommand: '&6놀이터 &f｜ &c해당 명령어가 존재하지 않습니다. &f/금지템'
+
+# 금지템 GUI 아이템
+PreviousItem:
+  Name: '&c[ &f이전 페이지 &c]'
+  Lore:
+    - '&6▶ &f클릭시 이전페이지로 이동합니다.'
+  Type:
+    ==: org.bukkit.inventory.ItemStack
+    type: SKULL_ITEM
+    damage: 3
+    meta:
+      ==: ItemMeta
+      meta-type: SKULL
+      display-name: §8» §b§nArrow Left§8 «
+      lore:
+        - ''
+        - §7§oMade with DecoHeads
+        - ' '
+      internal: H4sIAAAAAAAAAE2Oy06DQBhGf01MkPgYbkmgZSgsXDS2aYcUsJQOMDsug1xmakNBOzyVjyhLl1/OOcmnAqjwcupGzj/6r6rhTIFHXMKr5eROptulZjLb0Ux7ZWt2zmwNIaPIWFbk1SJTQZ2jK+uHht2eQRnYfRh7dlMB4EGBJ5LxkcEvk65Ok1ovE5cXElvzjk46D3B7XeELkfk7trCY+X5tHaTzz0VDFiOeLt2aXo5jLoh+WIac7UOjEOdvb0Ea2nY//nRE/m6LvInwIDobqaBtGod12n7eU0FqKjDydrQJYpf7G97601r6wq2DqOz8qTPphggv3kpPuk6V6G/ze/gDNmI4SxgBAAA=
+
+NextItem:
+  Name: '&a[ &f다음 페이지 &a]'
+  Lore:
+    - '&6▶ &f클릭시 다음페이지로 이동합니다.'
+  Type:
+    ==: org.bukkit.inventory.ItemStack
+    type: SKULL_ITEM
+    damage: 3
+    meta:
+      ==: ItemMeta
+      meta-type: SKULL
+      display-name: §8» §b§nArrow Right§8 «
+      lore:
+        - ''
+        - §7§oMade with DecoHeads
+        - ' '
+      internal: H4sIAAAAAAAAAE2PvW6DMBhFv1aqlKI+RlckO4ARQ4aqKI1R7JSEn+ANiCk4hkYEotDn6gOWsePVOWe4BoABL4fzqPVn/101Wi7gkZ7gFTuV7bm2bXoFwaZN8soscGmZLi7JkuAcnZA0wJiji+yHRl6fYTHI+zD28moAwMMCnpJcjxJ+5RQgcazR6RjocqJk3tEB6R1VF5d2yVS8U0LbmW/eyHby/rnOkKeOzqygFl04Fm2CttZey80el218YyldCrWumUoa3gaKRWdnF4VL7pdTlibnTDGL+fHEVGzzD9HyNkMi+vphit5FFDvcF43wA839dcNTXrOIN7TDXhWuVvMD+AMS6sj0HAEAAA==
+
+PreventClickItem:
+  Name: '&c클릭방지'
+  Lore:
+    - '&6▶ &f클릭방지를 위한 아이템입니다.'
+  Type:
+    ==: org.bukkit.inventory.ItemStack
+    type: STAINED_GLASS_PANE
+    damage: 8
+
+ShowPageItem:
+  Name: '&6[ &f현재 페이지 &6]'
+  Lore:
+    - '&6▶ &f[PAGE] 페이지'
+  Type:
+    ==: org.bukkit.inventory.ItemStack
+    type: SIGN
