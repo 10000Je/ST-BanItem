@@ -17,24 +17,30 @@ public final class BanItemCore extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        setEventListeners();
-        setCommandExecutors();
         saveDefaultConfig();
         cf = getConfig();
+        setEventListeners();
+        setCommandExecutors();
+        setCommandTabComplete();
         Bukkit.getConsoleSender().sendMessage("§6ST§f-§4BanItem §ev" + getDescription().getVersion() + " §a플러그인이 활성화 되었습니다. §f(created by STuuDENT, Discord 민제#5894)");
     }
 
     @Override
     public void onDisable() {
-        Bukkit.getConsoleSender().sendMessage("§6ST§f-§4BanItem §ev" + getDescription().getVersion() + " §c플러그인이 비활성화 되었습니다. §f(created by STuuDENT, Discord 민제#5894)");
         AllData allData = BanItemAPI.getData();
         allData.save();
+        Bukkit.getConsoleSender().sendMessage("§6ST§f-§4BanItem §ev" + getDescription().getVersion() + " §c플러그인이 비활성화 되었습니다. §f(created by STuuDENT, Discord 민제#5894)");
     }
 
     public void setCommandExecutors() {
-        getCommand("금지템").setExecutor(new UserCommands());
-        getCommand("금지템").setTabCompleter(new UserCommands());
+        getCommand("사용금지템").setExecutor(new UserCommands());
+        getCommand("조합금지템").setExecutor(new UserCommands());
         getCommand("금지템관리").setExecutor(new AdminCommands());
+    }
+
+    public void setCommandTabComplete() {
+        getCommand("사용금지템").setTabCompleter(new UserCommands());
+        getCommand("조합금지템").setExecutor(new UserCommands());
         getCommand("금지템관리").setTabCompleter(new AdminCommands());
     }
 

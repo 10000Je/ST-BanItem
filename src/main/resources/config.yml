@@ -20,13 +20,6 @@ OpenCraftPage: '&6놀이터 &f｜ 금지템:[&a조합&f] 설정창을 열었습�
 OtherOpenedRightClick: '&6놀이터 &f｜ 현재 다른 플레이어:[&a[PLAYER]&f]가 금지템:[&6우클릭&f]을 설정하고 있습니다.'
 OtherOpenedCraft: '&6놀이터 &f｜ 현재 다른 플레이어:[&a[PLAYER]&f]가 금지템:[&a조합&f]을 설정하고 있습니다.'
 
-# /금지템 명령어 메시지
-UserHelpMessage:
-  - ' '
-  - '&6놀이터 &f｜ /금지템 우클릭 - &6우킬릭(사용)을 금지하는 아이템을 보여줍니다.'
-  - '&6놀이터 &f｜ /금지템 조합 - &6조합을 금지하는 아이템을 보여줍니다.'
-WrongUserCommand: '&6놀이터 &f｜ &c해당 명령어가 존재하지 않습니다. &f/금지템'
-
 # 금지템 GUI 아이템
 PreviousItem:
   Name: '&c[ &f이전 페이지 &c]'

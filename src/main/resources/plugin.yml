@@ -6,8 +6,10 @@ description: 자작 금지템 플러그인 created by STuuDENT
 default-permission: true
 
 commands:
-  금지템:
-    description: Show Banned Items to Player.
+  사용금지템:
+    description: Show Right Click Banned Items to Player.
+  조합금지템:
+    description: Show Craft Banned Items to Player.
   금지템관리:
     permission: banitem.admin
     description: You Can Set BanItem through this Commands.
