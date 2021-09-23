@@ -2,8 +2,8 @@ package com.stuudent.BanItem.commands;
 
 import com.stuudent.BanItem.BanItemAPI;
 import com.stuudent.BanItem.BanItemCore;
-import com.stuudent.BanItem.data.BIData;
-import com.stuudent.BanItem.data.BIPlayer;
+import com.stuudent.BanItem.data.AllData;
+import com.stuudent.BanItem.data.PlayerData;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -23,8 +23,8 @@ public class AdminCommands implements TabExecutor {
         if(!(sender instanceof Player))
             return false;
         Player player = (Player) sender;
-        BIPlayer biPlayer = BanItemAPI.getPlayer(player);
-        BIData biData = BanItemAPI.getData();
+        PlayerData playerData = BanItemAPI.getPlayer(player);
+        AllData allData = BanItemAPI.getData();
         if(cmd.getName().equals("금지템관리")) {
             if(args.length == 0) {
                 for(String text : BanItemCore.cf.getStringList("AdminHelpMessage"))
@@ -32,26 +32,26 @@ public class AdminCommands implements TabExecutor {
                 return false;
             }
             if(args[0].equals("우클릭")) {
-                if(!biPlayer.isCanSetRightClick()) {
+                if(!playerData.isCanSetRightClick()) {
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', BanItemCore.cf.getString("OtherOpenedRightClick", "").replace("[PLAYER]", player.getName())));
                     return false;
                 }
                 int page = 1;
-                biPlayer.setRightClickPlayer();
-                biData.setRightClickPage(page);
-                player.openInventory(biData.getRightClickInventory(false, page));
+                playerData.setRightClickPlayer();
+                allData.setRightClickPage(page);
+                player.openInventory(allData.getRightClickInventory(false, page));
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', BanItemCore.cf.getString("OpenRightClickPage")));
                 return false;
             }
             if(args[0].equals("조합")) {
-                if(!biPlayer.isCanSetCraft()) {
+                if(!playerData.isCanSetCraft()) {
                     player.sendMessage(ChatColor.translateAlternateColorCodes('&', BanItemCore.cf.getString("OtherOpenedCraft", "").replace("[PLAYER]", player.getName())));
                     return false;
                 }
                 int page = 1;
-                biPlayer.setCraftPlayer();
-                biData.setCraftPage(page);
-                player.openInventory(biData.getCraftInventory(false, page));
+                playerData.setCraftPlayer();
+                allData.setCraftPage(page);
+                player.openInventory(allData.getCraftInventory(false, page));
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', BanItemCore.cf.getString("OpenCraftPage")));
                 return false;
             }

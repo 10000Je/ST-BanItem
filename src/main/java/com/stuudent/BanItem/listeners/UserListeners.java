@@ -3,9 +3,9 @@ package com.stuudent.BanItem.listeners;
 import com.stuudent.BanItem.BanItemAPI;
 import com.stuudent.BanItem.BanItemCore;
 import com.stuudent.BanItem.enums.BlockedType;
-import com.stuudent.BanItem.data.BIData;
-import com.stuudent.BanItem.data.BIItem;
-import com.stuudent.BanItem.data.BIPlayer;
+import com.stuudent.BanItem.data.AllData;
+import com.stuudent.BanItem.data.ItemData;
+import com.stuudent.BanItem.data.PlayerData;
 import com.stuudent.BanItem.event.BlockedEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -24,41 +24,41 @@ public class UserListeners implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent e) {
         Player player = (Player) e.getWhoClicked();
-        BIPlayer biPlayer = BanItemAPI.getPlayer(player);
-        BIData biData = BanItemAPI.getData();
-        if(biPlayer.isUserWatchingRightClick()) {
+        PlayerData playerData = BanItemAPI.getPlayer(player);
+        AllData allData = BanItemAPI.getData();
+        if(playerData.isUserWatchingRightClick()) {
             e.setCancelled(true);
-            int page = biPlayer.getUserRightClickPage();
+            int page = playerData.getUserRightClickPage();
             if (e.getRawSlot() == 45 && page != 1) {
                 player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
-                player.openInventory(biData.getRightClickInventory(true, page - 1));
-                biPlayer.setUserRightClickState();
-                biPlayer.setUserRightClickPage(page - 1);
+                player.openInventory(allData.getRightClickInventory(true, page - 1));
+                playerData.setUserRightClickState();
+                playerData.setUserRightClickPage(page - 1);
                 return;
             }
             if (e.getRawSlot() == 53) {
                 player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
-                player.openInventory(biData.getRightClickInventory(true, page + 1));
-                biPlayer.setUserRightClickState();
-                biPlayer.setUserRightClickPage(page + 1);
+                player.openInventory(allData.getRightClickInventory(true, page + 1));
+                playerData.setUserRightClickState();
+                playerData.setUserRightClickPage(page + 1);
                 return;
             }
         }
-        if(biPlayer.isUserWatchingCraft()) {
+        if(playerData.isUserWatchingCraft()) {
             e.setCancelled(true);
-            int page = biPlayer.getUserCraftPage();
+            int page = playerData.getUserCraftPage();
             if(e.getRawSlot() == 45 && page != 1) {
                 player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
-                player.openInventory(biData.getCraftInventory(true, page - 1));
-                biPlayer.setUserCraftState();
-                biPlayer.setUserCraftPage(page - 1);
+                player.openInventory(allData.getCraftInventory(true, page - 1));
+                playerData.setUserCraftState();
+                playerData.setUserCraftPage(page - 1);
                 return;
             }
             if(e.getRawSlot() == 53) {
                 player.playSound(player.getLocation(), Sound.UI_BUTTON_CLICK, 1, 1);
-                player.openInventory(biData.getCraftInventory(true, page + 1));
-                biPlayer.setUserCraftState();
-                biPlayer.setUserCraftPage(page + 1);
+                player.openInventory(allData.getCraftInventory(true, page + 1));
+                playerData.setUserCraftState();
+                playerData.setUserCraftPage(page + 1);
             }
         }
 
@@ -67,13 +67,13 @@ public class UserListeners implements Listener {
     @EventHandler
     public void onClose(InventoryCloseEvent e) {
         Player player = (Player) e.getPlayer();
-        BIPlayer biPlayer = BanItemAPI.getPlayer(player);
-        if(biPlayer.isUserWatchingRightClick()) {
-            biPlayer.removeUserRightClickTemp();
+        PlayerData playerData = BanItemAPI.getPlayer(player);
+        if(playerData.isUserWatchingRightClick()) {
+            playerData.removeUserRightClickTemp();
             return;
         }
-        if(biPlayer.isUserWatchingCraft()) {
-            biPlayer.removeUserCraftTemp();
+        if(playerData.isUserWatchingCraft()) {
+            playerData.removeUserCraftTemp();
         }
     }
 
@@ -84,8 +84,8 @@ public class UserListeners implements Listener {
         if(e.getPlayer().hasPermission(BanItemCore.cf.getString("Permission")))
             return;
         ItemStack heldItem = e.getPlayer().getInventory().getItemInMainHand();
-        BIItem biItem = BanItemAPI.getItem(heldItem);
-        if(biItem.isRightClickBanned()) {
+        ItemData itemData = BanItemAPI.getItem(heldItem);
+        if(itemData.isRightClickBanned()) {
             BlockedEvent event = new BlockedEvent(e.getPlayer(), heldItem, BlockedType.RIGHT_CLICK);
             Bukkit.getPluginManager().callEvent(event);
             if(event.isCancelled())
@@ -100,8 +100,8 @@ public class UserListeners implements Listener {
         if(e.getWhoClicked().hasPermission(BanItemCore.cf.getString("Permission")))
             return;
         ItemStack craftedItem = e.getCurrentItem();
-        BIItem biItem = BanItemAPI.getItem(craftedItem);
-        if(biItem.isCraftBanned()) {
+        ItemData itemData = BanItemAPI.getItem(craftedItem);
+        if(itemData.isCraftBanned()) {
             BlockedEvent event = new BlockedEvent((Player) e.getWhoClicked(), craftedItem, BlockedType.CRAFT);
             Bukkit.getPluginManager().callEvent(event);
             if(event.isCancelled())

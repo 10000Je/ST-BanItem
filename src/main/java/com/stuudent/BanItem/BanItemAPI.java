@@ -1,8 +1,8 @@
 package com.stuudent.BanItem;
 
-import com.stuudent.BanItem.data.BIData;
-import com.stuudent.BanItem.data.BIItem;
-import com.stuudent.BanItem.data.BIPlayer;
+import com.stuudent.BanItem.data.AllData;
+import com.stuudent.BanItem.data.ItemData;
+import com.stuudent.BanItem.data.PlayerData;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -13,30 +13,30 @@ import java.util.UUID;
 public class BanItemAPI {
 
     /* BIPlayer 반환 */
-    public static BIPlayer getPlayer(Player targetPlayer) {
-        return new BIPlayer(targetPlayer);
+    public static PlayerData getPlayer(Player targetPlayer) {
+        return new PlayerData(targetPlayer);
     }
 
-    public static BIPlayer getPlayer(UUID targetUUID) {
-        return new BIPlayer(Bukkit.getPlayer(targetUUID));
+    public static PlayerData getPlayer(UUID targetUUID) {
+        return new PlayerData(Bukkit.getPlayer(targetUUID));
     }
 
-    public static BIPlayer getPlayer(String targetName) {
-        return new BIPlayer(Bukkit.getPlayer(targetName));
+    public static PlayerData getPlayer(String targetName) {
+        return new PlayerData(Bukkit.getPlayer(targetName));
     }
 
     /* BIItem 반환 */
-    public static BIItem getItem(ItemStack targetItem) {
-        return new BIItem(targetItem);
+    public static ItemData getItem(ItemStack targetItem) {
+        return new ItemData(targetItem);
     }
 
-    public static BIItem getItem(Material targetType) {
-        return new BIItem(new ItemStack(targetType));
+    public static ItemData getItem(Material targetType) {
+        return new ItemData(new ItemStack(targetType));
     }
 
     /* BIData 반환 */
-    public static BIData getData() {
-        return new BIData();
+    public static AllData getData() {
+        return new AllData();
     }
 
 }

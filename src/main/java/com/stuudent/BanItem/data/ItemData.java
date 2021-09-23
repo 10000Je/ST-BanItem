@@ -3,26 +3,26 @@ package com.stuudent.BanItem.data;
 import com.stuudent.BanItem.BanItemAPI;
 import org.bukkit.inventory.ItemStack;
 
-public class BIItem {
+public class ItemData {
 
     public ItemStack targetItem;
-    public BIData biData;
+    public AllData allData;
 
-    public BIItem(ItemStack targetItem) {
+    public ItemData(ItemStack targetItem) {
         this.targetItem = targetItem;
-        this.biData = BanItemAPI.getData();
+        this.allData = BanItemAPI.getData();
     }
 
     public void setRightClickItem(int index) {
-        biData.setRightClickItem(this.targetItem, index);
+        allData.setRightClickItem(this.targetItem, index);
     }
 
     public void setCraftItem(int index) {
-        biData.setCraftItem(this.targetItem, index);
+        allData.setCraftItem(this.targetItem, index);
     }
 
     public boolean isRightClickBanned() {
-        for(ItemStack compareItem : biData.getRightClickItems()) {
+        for(ItemStack compareItem : allData.getRightClickItems()) {
             if(this.targetItem.isSimilar(compareItem))
                 return true;
         }
@@ -30,7 +30,7 @@ public class BIItem {
     }
 
     public boolean isCraftBanned() {
-        for(ItemStack compareItem : biData.getCraftItems()) {
+        for(ItemStack compareItem : allData.getCraftItems()) {
             if(this.targetItem.isSimilar(compareItem))
                 return true;
         }

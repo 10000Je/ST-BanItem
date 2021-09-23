@@ -2,8 +2,8 @@ package com.stuudent.BanItem.commands;
 
 import com.stuudent.BanItem.BanItemAPI;
 import com.stuudent.BanItem.BanItemCore;
-import com.stuudent.BanItem.data.BIData;
-import com.stuudent.BanItem.data.BIPlayer;
+import com.stuudent.BanItem.data.AllData;
+import com.stuudent.BanItem.data.PlayerData;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -23,8 +23,8 @@ public class UserCommands implements TabExecutor {
         if(!(sender instanceof Player))
             return false;
         Player player = (Player) sender;
-        BIPlayer biPlayer = BanItemAPI.getPlayer(player);
-        BIData biData = BanItemAPI.getData();
+        PlayerData playerData = BanItemAPI.getPlayer(player);
+        AllData allData = BanItemAPI.getData();
         if(cmd.getName().equals("금지템")) {
             if(args.length == 0) {
                 for(String text : BanItemCore.cf.getStringList("UserHelpMessage"))
@@ -33,16 +33,16 @@ public class UserCommands implements TabExecutor {
             }
             if(args[0].equals("우클릭")) {
                 int page = 1;
-                biPlayer.setUserRightClickState();
-                biPlayer.setUserRightClickPage(page);
-                player.openInventory(biData.getRightClickInventory(true, page));
+                playerData.setUserRightClickState();
+                playerData.setUserRightClickPage(page);
+                player.openInventory(allData.getRightClickInventory(true, page));
                 return false;
             }
             if(args[0].equals("조합")) {
                 int page = 1;
-                biPlayer.setUserCraftState();
-                biPlayer.setUserCraftPage(page);
-                player.openInventory(biData.getCraftInventory(true, page));
+                playerData.setUserCraftState();
+                playerData.setUserCraftPage(page);
+                player.openInventory(allData.getCraftInventory(true, page));
                 return false;
             }
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', BanItemCore.cf.getString("WrongUserCommand")));
