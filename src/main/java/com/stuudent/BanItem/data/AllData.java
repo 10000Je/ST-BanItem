@@ -25,7 +25,7 @@ public class AllData {
     public static YamlConfiguration tempCf;
 
     static {
-        configFile = new File("plugins/" + BanItemCore.instance.getName() + "/BIData.yml");
+        configFile = new File("plugins/" + BanItemCore.instance.getName() + "/banItemData.yml");
         tempFile = new File("plugins/" + BanItemCore.instance.getName() + "/tempData.yml");
         cf = YamlConfiguration.loadConfiguration(configFile);
         tempCf = YamlConfiguration.loadConfiguration(tempFile);
