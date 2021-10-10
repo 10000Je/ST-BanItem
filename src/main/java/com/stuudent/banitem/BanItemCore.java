@@ -1,10 +1,10 @@
-package com.stuudent.BanItem;
+package com.stuudent.banitem;
 
-import com.stuudent.BanItem.commands.AdminCommands;
-import com.stuudent.BanItem.commands.UserCommands;
-import com.stuudent.BanItem.data.AllData;
-import com.stuudent.BanItem.listeners.AdminListeners;
-import com.stuudent.BanItem.listeners.UserListeners;
+import com.stuudent.banitem.commands.AdminCommands;
+import com.stuudent.banitem.commands.UserCommands;
+import com.stuudent.banitem.data.ItemData;
+import com.stuudent.banitem.listeners.AdminListeners;
+import com.stuudent.banitem.listeners.UserListeners;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -27,8 +27,7 @@ public final class BanItemCore extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        AllData allData = BanItemAPI.getData();
-        allData.save();
+        ItemData.save();
         Bukkit.getConsoleSender().sendMessage("§6ST§f-§4BanItem §ev" + getDescription().getVersion() + " §c플러그인이 비활성화 되었습니다. §f(created by STuuDENT, Discord 민제#5894)");
     }
 

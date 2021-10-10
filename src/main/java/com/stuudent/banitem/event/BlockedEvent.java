@@ -1,6 +1,6 @@
-package com.stuudent.BanItem.event;
+package com.stuudent.banitem.event;
 
-import com.stuudent.BanItem.enums.BlockedType;
+import com.stuudent.banitem.enums.BannedType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 public class BlockedEvent extends Event implements Cancellable {
 
     public boolean cancelled;
-    public BlockedType blockedType;
+    public BannedType bannedType;
     public Player usedPlayer;
     public ItemStack usedItem;
     public static HandlerList handlers;
@@ -19,14 +19,14 @@ public class BlockedEvent extends Event implements Cancellable {
         handlers = new HandlerList();
     }
 
-    public BlockedEvent(Player usedPlayer, ItemStack usedItem, BlockedType blockedType) {
+    public BlockedEvent(Player usedPlayer, ItemStack usedItem, BannedType bannedType) {
         this.usedPlayer = usedPlayer;
         this.usedItem = usedItem;
-        this.blockedType = blockedType;
+        this.bannedType = bannedType;
     }
 
-    public BlockedType getType() {
-        return this.blockedType;
+    public BannedType getType() {
+        return this.bannedType;
     }
 
     public Player getPlayer() {

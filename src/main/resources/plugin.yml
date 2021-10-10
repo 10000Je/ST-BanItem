@@ -1,7 +1,7 @@
 name: ST-BanItem
 version: 2.1
 author: STuuDENT
-main: com.stuudent.BanItem.BanItemCore
+main: com.stuudent.banitem.BanItemCore
 description: 자작 금지템 플러그인 created by STuuDENT
 default-permission: true
 
