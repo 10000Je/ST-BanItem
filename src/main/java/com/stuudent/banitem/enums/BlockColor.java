@@ -8,7 +8,7 @@ public enum BlockColor {
     BROWN((short) 12), GREEN((short) 13), RED((short) 14), BLACK((short) 15);
 
     private final short data;
-    private BlockColor(Short data) {
+    private BlockColor(short data) {
         this.data = data;
     }
 
